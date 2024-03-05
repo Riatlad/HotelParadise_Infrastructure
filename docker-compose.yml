@@ -5,17 +5,18 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: mipassword
-      POSTGRES_DB: hotelparadise
+      POSTGRES_DB: pruebashotel
     volumes:
       - ./WebApps/datos:/var/lib/postgresql/data  # Utiliza un directorio separado para la persistencia de datos de PostgreSQL
+      - ./:/docker-entrypoint-initdb.d
     networks:
       - minetwork
+    
 
   tomcat:
     image: tomcat:latest
     volumes:
       - ./WebApps/java:/usr/local/tomcat/webapps
-      - ./WebApps/war:/usr/local/tomcat/webapps/ROOT  # Monta el directorio que contiene el archivo WAR
     ports:
       - 7777:8080
     depends_on:
