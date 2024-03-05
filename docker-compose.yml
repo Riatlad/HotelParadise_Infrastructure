@@ -24,11 +24,11 @@ services:
     networks:
       - minetwork
 
-  phpmyadmin:
-    image: phpmyadmin:latest
+  adminer:
+    image: adminer:latest
     restart: always
     ports:
-      - 8899:8899
+      - 8080:8080
     depends_on:
       - db
     networks:
